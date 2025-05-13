@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Витрина</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        button {
+            font-size: 18px;
+            padding: 12px 24px;
+        }
+    </style>
+</head>
+<body>
+<h1>Alibek</h1>
+<button onclick="openLink()">Открыть витрину</button>
+
+<script>
+    function openLink() {
+        const deeplink = "https://bee.gg/showcase/shop?url=https://shop.beeline.kz?utm_source=cvm&utm_medium=sms&utm_campaign=PILOT_tickets";
+        if (window.MyBeeline?.deeplink) {
+            window.MyBeeline.deeplink(deeplink);
+        } else if (window.webkit?.messageHandlers?.deeplink) {
+            window.webkit.messageHandlers.deeplink.postMessage(deeplink);
+        } else {
+            window.location.href = deeplink;
+        }
+    }
+</script>
+</body>
+</html>
